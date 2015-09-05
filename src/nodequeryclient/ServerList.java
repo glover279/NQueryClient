@@ -5,12 +5,8 @@
  */
 package nodequeryclient;
 
-import java.sql.Date;
 import java.sql.SQLException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Scanner;
-import org.json.JSONObject;
 import org.springframework.web.client.RestTemplate;
 
 /**

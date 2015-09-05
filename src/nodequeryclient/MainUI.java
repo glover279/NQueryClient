@@ -45,6 +45,7 @@ public class MainUI extends javax.swing.JFrame {
         ShowAccStats = new javax.swing.JToggleButton();
         updServerDatabtn = new javax.swing.JButton();
         ShowServStats = new javax.swing.JButton();
+        ShowServTBL = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -100,6 +101,13 @@ public class MainUI extends javax.swing.JFrame {
             }
         });
 
+        ShowServTBL.setText("Show Server Table");
+        ShowServTBL.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ShowServTBLActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -138,13 +146,14 @@ public class MainUI extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(updAccBtn))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(updServerDatabtn)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(updServerDatabtn)
+                                    .addComponent(ShowServStats))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(ShowServStats)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(ShowServTBL)
+                                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -178,7 +187,9 @@ public class MainUI extends javax.swing.JFrame {
                         .addGap(65, 65, 65)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(36, 36, 36)
-                .addComponent(ShowServStats)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ShowServStats)
+                    .addComponent(ShowServTBL))
                 .addContainerGap(135, Short.MAX_VALUE))
         );
 
@@ -247,6 +258,11 @@ public class MainUI extends javax.swing.JFrame {
          javafx.application.Application.launch(ServerStats.class);
     }//GEN-LAST:event_ShowServStatsActionPerformed
 
+    private void ShowServTBLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowServTBLActionPerformed
+        ServerData sd=new ServerData();
+        sd.setVisible(true);
+    }//GEN-LAST:event_ShowServTBLActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -288,6 +304,7 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JLabel NmStatic;
     private javax.swing.JToggleButton ShowAccStats;
     private javax.swing.JButton ShowServStats;
+    private javax.swing.JButton ShowServTBL;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JSeparator jSeparator1;

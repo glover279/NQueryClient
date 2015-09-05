@@ -38,10 +38,6 @@ String load = "",ip = "",ava = "",la="";
         updTablebtn = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblData = new javax.swing.JTable();
-        loadChk = new javax.swing.JCheckBox();
-        LAChk = new javax.swing.JCheckBox();
-        IPChk = new javax.swing.JCheckBox();
-        avaChk = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -66,19 +62,6 @@ String load = "",ip = "",ava = "",la="";
         tblData.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
         jScrollPane2.setViewportView(tblData);
 
-        loadChk.setText("Load Percentage");
-        loadChk.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loadChkActionPerformed(evt);
-            }
-        });
-
-        LAChk.setText("Load Average");
-
-        IPChk.setText("IPV4");
-
-        avaChk.setText("Availability");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -86,34 +69,15 @@ String load = "",ip = "",ava = "",la="";
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 857, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(updTablebtn, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(loadChk, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(77, 77, 77))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(IPChk)
-                            .addComponent(LAChk)
-                            .addComponent(avaChk))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addComponent(updTablebtn)
+                .addGap(77, 77, 77))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addComponent(updTablebtn)
-                .addGap(87, 87, 87)
-                .addComponent(loadChk)
-                .addGap(18, 18, 18)
-                .addComponent(LAChk)
-                .addGap(18, 18, 18)
-                .addComponent(IPChk)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(avaChk)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
@@ -126,18 +90,6 @@ String load = "",ip = "",ava = "",la="";
 
     private void updTablebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updTablebtnActionPerformed
         DB db11=new DB();
-        
-    if (loadChk.isSelected())
-    {load=", LOADPERC";}
-    
-     if (IPChk.isSelected())
-    {ip=", IPV4";}
-     if (avaChk.isSelected())
-    {ava=", AVAILABILITY";}
-     if (LAChk.isSelected())
-    {la=", LOAD_AVE";}
-    
-     sql="select UPDATE_TIME, NAME, ID"+load+ip+ava+la+" FROM TBLSERVERS";
      
         tblData.setModel(DbUtils.resultSetToTableModel(db11.ServerData()));
         
@@ -145,10 +97,6 @@ String load = "",ip = "",ava = "",la="";
         
         
     }//GEN-LAST:event_updTablebtnActionPerformed
-
-    private void loadChkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadChkActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_loadChkActionPerformed
 
     public String getSQLquery()
     {   System.out.println(sql);
@@ -190,11 +138,7 @@ String load = "",ip = "",ava = "",la="";
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JCheckBox IPChk;
-    private javax.swing.JCheckBox LAChk;
-    private javax.swing.JCheckBox avaChk;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JCheckBox loadChk;
     private javax.swing.JTable tblData;
     private javax.swing.JButton updTablebtn;
     // End of variables declaration//GEN-END:variables
