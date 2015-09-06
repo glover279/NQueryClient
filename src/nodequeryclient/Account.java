@@ -25,7 +25,7 @@ import org.springframework.web.client.RestTemplate;
  */
 
 public class Account {
-    DB db9=new DB(); 
+    DB db9=new DB(); //instantiation of a new DB object names db9                   
     private String api=db9.getAPIkey();
     
     
@@ -99,7 +99,7 @@ return success;
     CharSequence cs1 = "ERROR";
     boolean chk=t.contains(cs1);
     String Name=obj.getJSONObject("data").getString("name");
- //Name = Name.replaceAll("\\s",""); 
+ 
 
     System.out.println("Name: "+Name);
         return chk;
@@ -109,11 +109,12 @@ return success;
          //Date object
 	 Date date= new Date();
          //getTime() returns current time in milliseconds
-	 long time = date.getTime();
+	 long time = date.getTime();//The java.util.Date.getTime() method returns how many milliseconds have passed since January 1, 1970, 00:00:00 GMT, this time in seconds is often referred to as UNIX Time
          //Passed the milliseconds to constructor of Timestamp class 
 	 Timestamp ts = new Timestamp(time);
-	 System.out.println("Current Time Stamp: "+ts);
-return ts;}
+	 System.out.println("Current Time Stamp: "+ts); //for debugging purposes
+return ts; //return the timestamp value
+    }
     
     
     public String getName() throws HTTPstatusException
