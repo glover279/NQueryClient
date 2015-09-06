@@ -97,14 +97,19 @@ public DB(){
             rs3.next();
             
             System.out.println(rnum);
-            if(rs3.getInt(1)==0){
-                stmt.executeUpdate(I_into);}
+            if(rs3.getInt(1)==0
+                    
+                    
+                    
+                    ){
+                stmt.executeUpdate(I_into);
+            }
             else{System.out.println("CANNOT INSERT, UPDATING");
             stmt.execute("UPDATE TBLACCOUNT" + " SET"+" NAME='"+Name+"', TIMEZONE="+tz+", TOTALAPICALLS="+totreq+", DETECTEDRATE_LIMIT="+ratelim+", MAX_ALLOWEDSERVERS="+maxserv+", APIKEY='"+API+"'"+", UNIXTIME='"+acc.getUnixTime()+"',"+" NUMBER="+rnum ); }
             
          
             stmt.close();
-            System.out.println("NodeQuery Account Sucessfully Updated");
+            System.out.println("NodeQuery Account Successfully Updated");
             JOptionPane.showMessageDialog(null, "NodeQuery Account Statistics Successfully Updated");
             }else{JOptionPane.showMessageDialog(null, "API Key Invalid");}
             
