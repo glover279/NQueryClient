@@ -110,12 +110,13 @@ public class ServerList {
       System.out.println(idInt+"STAT: "+status+"ava: "+availabilityDouble+" updaTM: "+time+" NM: "+name+" LPERC: "+loadpercentageDouble+" LA: "+load_average+"ip: "+ipv4);
       Server temp5=new Server(idInt,availabilityDouble,time,name,loadpercentageDouble,load_average,ipv4);
       System.out.println("LA: "+temp5.getLoad_average());
-       p++;//id,  availability,  update_time,  name,  loadpercentage,  load_average,  ipv4
+       p++;
+        
+        //id,  availability,  update_time,  name,  loadpercentage,  load_average,  ipv4
        //first server not added, check delimeter
        //scan3.close();
        }
        scan.close();
-       
        
     }
    

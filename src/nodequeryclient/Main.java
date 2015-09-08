@@ -16,14 +16,14 @@ public class Main {
     {
         
     //Account acc1=new Account();
-   DB db2=new DB();
+    DB db2=new DB();
     DB.createConnection();
     db2.CreateTables();
     MainUI mui=new MainUI();
     mui.setVisible(true);
     
     
-//    System.out.println(acc1.getTimeInzone().toString());
+   //System.out.println(acc1.getTimeInzone().toString());
    // System.out.println(db2.getFromAccDBString("TBLACCOUNT","TOTALAPICALLS", 1));
     }
     

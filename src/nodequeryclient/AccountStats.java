@@ -19,15 +19,9 @@ import javafx.scene.chart.XYChart;
 import javafx.stage.Stage;
  
 public class AccountStats extends Application {
-    
- 
-   
 
-
- 
- 
     @Override public void start(Stage stage) throws SQLException {
-       DB db3 =new DB();
+       DB db3 =new DB(); //instantiate new DB object
        
         
         stage.setTitle("NodeQuery Account Statistics");

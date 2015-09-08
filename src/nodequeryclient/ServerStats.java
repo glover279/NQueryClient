@@ -93,14 +93,14 @@ public class ServerStats extends Application {
        
         
        
-        stage.setTitle("Server Statistics reported by NodeQuery agents");
+        stage.setTitle("Server Statistics");
         final CategoryAxis xAxis = new CategoryAxis();
         final NumberAxis yAxis = new NumberAxis();
-        final BarChart<String,Number> bc = 
-            new BarChart<String,Number>(xAxis,yAxis);
+        final BarChart<String,Number> bc;
+        bc = new BarChart<>(xAxis,yAxis);
         bc.autosize();
         
-        bc.setTitle("Server Statistics");
+        bc.setTitle("Server Statistics reported by NodeQuery agents");
         //xAxis.setLabel("Country");       
         yAxis.setLabel("Value");
         xAxis.setLabel("Update Time");
