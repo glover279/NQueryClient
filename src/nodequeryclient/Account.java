@@ -97,7 +97,10 @@ return success;
     JSONObject obj = new JSONObject(getAccount());
     String t= obj.toString();
     CharSequence cs1 = "ERROR";
-    boolean chk=t.contains(cs1);
+    boolean chk;
+    if (t.contains(cs1))
+    { chk=false;}
+    else{chk=true;}
     String Name=obj.getJSONObject("data").getString("name");
  
 

@@ -27,9 +27,9 @@ public class AccountStats extends Application {
         stage.setTitle("NodeQuery Account Statistics");
         final CategoryAxis xAxis = new CategoryAxis();
         final NumberAxis yAxis = new NumberAxis();
-        final BarChart<String,Number> bc = 
+        final BarChart<String,Number> AccountBc = 
             new BarChart<String,Number>(xAxis,yAxis);
-        bc.setTitle("Account Statistics");
+        AccountBc.setTitle("Account Statistics");
         //xAxis.setLabel("Country");       
         yAxis.setLabel("Value");
         xAxis.setLabel("Update Time");
@@ -66,8 +66,8 @@ public class AccountStats extends Application {
         
         
         
-        Scene scene  = new Scene(bc,800,600);
-        bc.getData().addAll(series1, series2);
+        Scene scene  = new Scene(AccountBc,800,600);
+        AccountBc.getData().addAll(series1, series2);
         stage.setScene(scene);
         stage.show();
     }

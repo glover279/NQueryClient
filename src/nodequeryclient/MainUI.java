@@ -5,7 +5,11 @@
  */
 package nodequeryclient;
 
+import java.awt.Desktop;
 import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,26 +36,27 @@ public class MainUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblName = new javax.swing.JLabel();
+        NameLbl = new javax.swing.JLabel();
         updAccBtn = new javax.swing.JButton();
-        setKeybtn = new javax.swing.JButton();
+        setKeyBtn = new javax.swing.JButton();
         keyFld = new javax.swing.JPasswordField();
-        enterAPI = new javax.swing.JLabel();
+        enterAPIlbl = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        NmStatic = new javax.swing.JLabel();
-        tzStatic = new javax.swing.JLabel();
-        lblTz = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
-        ShowAccStats = new javax.swing.JToggleButton();
-        updServerDatabtn = new javax.swing.JButton();
-        ShowServStats = new javax.swing.JButton();
-        ShowServTBL = new javax.swing.JButton();
-        logo = new javax.swing.JLabel();
+        NmStaticLbl = new javax.swing.JLabel();
+        tzStaticLbl = new javax.swing.JLabel();
+        TzLbl = new javax.swing.JLabel();
+        seperatorSep = new javax.swing.JSeparator();
+        ShowAccStatsBtntgl = new javax.swing.JToggleButton();
+        updServerDataBtn = new javax.swing.JButton();
+        ShowServStatsBtn = new javax.swing.JButton();
+        ShowServTBLbtn = new javax.swing.JButton();
+        logoLbl = new javax.swing.JLabel();
+        GetStartedBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        lblName.setText("_____");
+        NameLbl.setText("_____");
 
         updAccBtn.setText("Update Account Data");
         updAccBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -60,10 +65,10 @@ public class MainUI extends javax.swing.JFrame {
             }
         });
 
-        setKeybtn.setText("Set");
-        setKeybtn.addActionListener(new java.awt.event.ActionListener() {
+        setKeyBtn.setText("Set");
+        setKeyBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                setKeybtnActionPerformed(evt);
+                setKeyBtnActionPerformed(evt);
             }
         });
 
@@ -74,43 +79,50 @@ public class MainUI extends javax.swing.JFrame {
             }
         });
 
-        enterAPI.setText("Please Enter your API key below");
+        enterAPIlbl.setText("Please Enter your API key below");
 
-        NmStatic.setText("Name:");
+        NmStaticLbl.setText("Name:");
 
-        tzStatic.setText("Time Zone:");
+        tzStaticLbl.setText("Time Zone:");
 
-        lblTz.setText("_____");
+        TzLbl.setText("_____");
 
-        ShowAccStats.setText("Show Account Statistics");
-        ShowAccStats.addActionListener(new java.awt.event.ActionListener() {
+        ShowAccStatsBtntgl.setText("Show Account Statistics");
+        ShowAccStatsBtntgl.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ShowAccStatsActionPerformed(evt);
+                ShowAccStatsBtntglActionPerformed(evt);
             }
         });
 
-        updServerDatabtn.setText("Update All Server Data");
-        updServerDatabtn.addActionListener(new java.awt.event.ActionListener() {
+        updServerDataBtn.setText("Update All Server Data");
+        updServerDataBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updServerDatabtnActionPerformed(evt);
+                updServerDataBtnActionPerformed(evt);
             }
         });
 
-        ShowServStats.setText("Show Server Statistics");
-        ShowServStats.addActionListener(new java.awt.event.ActionListener() {
+        ShowServStatsBtn.setText("Show Server Statistics");
+        ShowServStatsBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ShowServStatsActionPerformed(evt);
+                ShowServStatsBtnActionPerformed(evt);
             }
         });
 
-        ShowServTBL.setText("Show Server Table");
-        ShowServTBL.addActionListener(new java.awt.event.ActionListener() {
+        ShowServTBLbtn.setText("Show Server Table");
+        ShowServTBLbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ShowServTBLActionPerformed(evt);
+                ShowServTBLbtnActionPerformed(evt);
             }
         });
 
-        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/nodequeryclient/yHl8Myx1-thumb.png"))); // NOI18N
+        logoLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/nodequeryclient/yHl8Myx1-thumb.png"))); // NOI18N
+
+        GetStartedBtn.setText("Getting Started With NodeQuery");
+        GetStartedBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GetStartedBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -123,37 +135,42 @@ public class MainUI extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(10, 10, 10)
-                                .addComponent(enterAPI))
+                                .addComponent(enterAPIlbl))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(keyFld, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(setKeybtn)))
+                                .addComponent(setKeyBtn)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(NmStatic, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(tzStatic, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(NmStaticLbl, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(tzStaticLbl, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblName)
-                            .addComponent(lblTz))
+                            .addComponent(NameLbl)
+                            .addComponent(TzLbl))
                         .addGap(40, 40, 40))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(58, 58, 58)
+                        .addComponent(updServerDataBtn)
+                        .addGap(203, 203, 203)
+                        .addComponent(ShowAccStatsBtntgl)
+                        .addGap(18, 18, 18)
+                        .addComponent(updAccBtn))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(updServerDatabtn)
-                                .addGap(203, 203, 203)
-                                .addComponent(ShowAccStats)
-                                .addGap(18, 18, 18)
-                                .addComponent(updAccBtn))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(ShowServStats)
-                                .addGap(88, 88, 88)
-                                .addComponent(logo)
-                                .addGap(106, 106, 106)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(ShowServTBL)
-                                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                .addContainerGap(58, Short.MAX_VALUE)
+                                .addComponent(ShowServStatsBtn)
+                                .addGap(130, 130, 130))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(34, 34, 34)
+                                .addComponent(GetStartedBtn)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(logoLbl)
+                        .addGap(106, 106, 106)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ShowServTBLbtn)
+                            .addComponent(seperatorSep, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addContainerGap())
@@ -164,54 +181,68 @@ public class MainUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(updAccBtn)
-                    .addComponent(ShowAccStats)
-                    .addComponent(updServerDatabtn))
+                    .addComponent(ShowAccStatsBtntgl)
+                    .addComponent(updServerDataBtn))
                 .addGap(4, 4, 4)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(1, 1, 1)
-                        .addComponent(enterAPI)
+                        .addComponent(enterAPIlbl)
                         .addGap(3, 3, 3)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(keyFld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(setKeybtn)))
+                            .addComponent(setKeyBtn)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblName)
-                            .addComponent(NmStatic))
+                            .addComponent(NameLbl)
+                            .addComponent(NmStaticLbl))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tzStatic)
-                            .addComponent(lblTz))))
+                            .addComponent(tzStaticLbl)
+                            .addComponent(TzLbl))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(15, 15, 15)
-                        .addComponent(ShowServStats)
-                        .addGap(27, 27, 27)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)
-                        .addComponent(ShowServTBL))
+                        .addComponent(ShowServStatsBtn)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addComponent(seperatorSep, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(36, 36, 36)
+                                .addComponent(ShowServTBLbtn))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(38, 38, 38)
+                                .addComponent(GetStartedBtn))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(logo)))
+                        .addComponent(logoLbl)))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
-        lblName.getAccessibleContext().setAccessibleName("lblName");
-        lblName.getAccessibleContext().setAccessibleDescription("");
+        NameLbl.getAccessibleContext().setAccessibleName("lblName");
+        NameLbl.getAccessibleContext().setAccessibleDescription("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void updAccBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updAccBtnActionPerformed
-        String Name=DB.getFromAccDBString("TBLACCOUNT", "NAME", 1);
-        lblName.setText(Name);
-        lblTz.setText(DB.getFromAccDBString("TBLACCOUNT", "TIMEZONE", 1));
+        String Name = null;
+        try {
+            Name = DB.getFromAccDBString("TBLACCOUNT", "NAME", DB.getNumberOfRows()-1);
+        } catch (SQLException ex) {
+            Logger.getLogger(MainUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        NameLbl.setText(Name);
+        try {
+            TzLbl.setText(DB.getFromAccDBString("TBLACCOUNT", "TIMEZONE", DB.getNumberOfRows()-1));
+        } catch (SQLException ex) {
+            Logger.getLogger(MainUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_updAccBtnActionPerformed
 
-    private void setKeybtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setKeybtnActionPerformed
+    private void setKeyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setKeyBtnActionPerformed
        // DB.setAPIkey(keyFld.getText());
         DB.setAPIkey(keyFld.getText());
         Account ac2=new Account();
@@ -238,13 +269,13 @@ public class MainUI extends javax.swing.JFrame {
             Logger.getLogger(MainUI.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-    }//GEN-LAST:event_setKeybtnActionPerformed
+    }//GEN-LAST:event_setKeyBtnActionPerformed
 
     private void keyFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_keyFldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_keyFldActionPerformed
 
-    private void ShowAccStatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowAccStatsActionPerformed
+    private void ShowAccStatsBtntglActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowAccStatsBtntglActionPerformed
         AccountStats acstat=new AccountStats();
         //acstat.setVisible(true);
         //AccountStats.launch("");
@@ -252,9 +283,9 @@ public class MainUI extends javax.swing.JFrame {
          javafx.application.Application.launch(AccountStats.class);
 
         
-    }//GEN-LAST:event_ShowAccStatsActionPerformed
+    }//GEN-LAST:event_ShowAccStatsBtntglActionPerformed
 
-    private void updServerDatabtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updServerDatabtnActionPerformed
+    private void updServerDataBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updServerDataBtnActionPerformed
         
         try {
             ServerList Serv1=new ServerList();
@@ -262,18 +293,29 @@ public class MainUI extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(MainUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_updServerDatabtnActionPerformed
+    }//GEN-LAST:event_updServerDataBtnActionPerformed
 
-    private void ShowServStatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowServStatsActionPerformed
+    private void ShowServStatsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowServStatsBtnActionPerformed
 //        ServerStats servstat=new ServerStats();
        // servstat.setVisible(true);
          javafx.application.Application.launch(ServerStats.class);
-    }//GEN-LAST:event_ShowServStatsActionPerformed
+    }//GEN-LAST:event_ShowServStatsBtnActionPerformed
 
-    private void ShowServTBLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowServTBLActionPerformed
+    private void ShowServTBLbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowServTBLbtnActionPerformed
         ServerData sd=new ServerData();
         sd.setVisible(true);
-    }//GEN-LAST:event_ShowServTBLActionPerformed
+        
+    }//GEN-LAST:event_ShowServTBLbtnActionPerformed
+
+    private void GetStartedBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GetStartedBtnActionPerformed
+        URL getstart = null;
+        try {
+            getstart = new URL("https://nodequery.com/help/getting-started");
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(MainUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        openWebpage(getstart);
+    }//GEN-LAST:event_GetStartedBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -312,23 +354,42 @@ public class MainUI extends javax.swing.JFrame {
         
         
     }
+    public static void openWebpage(URI uri) {
+    Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
+    if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
+        try { 
+            desktop.browse(uri);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } 
+    } 
+} 
+ 
+public static void openWebpage(URL url) {
+    try { 
+        openWebpage(url.toURI());
+    } catch (URISyntaxException e) {
+        e.printStackTrace();
+    } 
+} 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel NmStatic;
-    private javax.swing.JToggleButton ShowAccStats;
-    private javax.swing.JButton ShowServStats;
-    private javax.swing.JButton ShowServTBL;
-    private javax.swing.JLabel enterAPI;
+    private javax.swing.JButton GetStartedBtn;
+    private javax.swing.JLabel NameLbl;
+    private javax.swing.JLabel NmStaticLbl;
+    private javax.swing.JToggleButton ShowAccStatsBtntgl;
+    private javax.swing.JButton ShowServStatsBtn;
+    private javax.swing.JButton ShowServTBLbtn;
+    private javax.swing.JLabel TzLbl;
+    private javax.swing.JLabel enterAPIlbl;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPasswordField keyFld;
-    private javax.swing.JLabel lblName;
-    private javax.swing.JLabel lblTz;
-    private javax.swing.JLabel logo;
-    private javax.swing.JButton setKeybtn;
-    private javax.swing.JLabel tzStatic;
+    private javax.swing.JLabel logoLbl;
+    private javax.swing.JSeparator seperatorSep;
+    private javax.swing.JButton setKeyBtn;
+    private javax.swing.JLabel tzStaticLbl;
     private javax.swing.JButton updAccBtn;
-    private javax.swing.JButton updServerDatabtn;
+    private javax.swing.JButton updServerDataBtn;
     // End of variables declaration//GEN-END:variables
 
 }

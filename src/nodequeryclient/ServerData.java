@@ -37,7 +37,7 @@ String load = "",ip = "",ava = "",la="";
 
         updTablebtn = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tblData = new javax.swing.JTable();
+        DataTbl = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -48,7 +48,7 @@ String load = "",ip = "",ava = "",la="";
             }
         });
 
-        tblData.setModel(new javax.swing.table.DefaultTableModel(
+        DataTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -59,8 +59,8 @@ String load = "",ip = "",ava = "",la="";
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tblData.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
-        jScrollPane2.setViewportView(tblData);
+        DataTbl.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        jScrollPane2.setViewportView(DataTbl);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -91,7 +91,7 @@ String load = "",ip = "",ava = "",la="";
     private void updTablebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updTablebtnActionPerformed
         DB db11=new DB();
      
-        tblData.setModel(DbUtils.resultSetToTableModel(db11.ServerData()));
+        DataTbl.setModel(DbUtils.resultSetToTableModel(db11.ServerData()));
         
         
         
@@ -135,11 +135,13 @@ String load = "",ip = "",ava = "",la="";
                 new ServerData().setVisible(true);
             }
         });
+    
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable DataTbl;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable tblData;
     private javax.swing.JButton updTablebtn;
     // End of variables declaration//GEN-END:variables
 }

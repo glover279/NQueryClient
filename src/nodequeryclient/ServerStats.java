@@ -29,32 +29,32 @@ public class ServerStats extends Application {
     String [] names=DB.getFromServDBName();
     XYChart.Series series1 = new XYChart.Series();
     XYChart.Series series2 = new XYChart.Series();
-     ChoiceBox<String> choicebox =new ChoiceBox<>();
+     ChoiceBox<String> SelectServerCb =new ChoiceBox<>();
  
  
   public void setStats() throws SQLException
   {     
-       choicebox.setLayoutX(500);
-       choicebox.setLayoutY(500);
+       SelectServerCb.setLayoutX(500);
+       SelectServerCb.setLayoutY(500);
       
        
-        String temp = choicebox.getValue();
+        String temp = SelectServerCb.getValue();
        // choicebox.getSelectionModel().clearSelection();
        //  choicebox.getItems().clear();
        
        //choicebox.setValue(temp);
       
-        int totapi1=DB.getFromServDBint("AVAILABILITY",choicebox.getValue(), DB.getNumberOfRowsTBLSERVERS()-5);
-        int totapi2=DB.getFromServDBint("AVAILABILITY",choicebox.getValue(), DB.getNumberOfRowsTBLSERVERS()-4);
-        int totapi3=DB.getFromServDBint("AVAILABILITY",choicebox.getValue(), DB.getNumberOfRowsTBLSERVERS()-3);
-        int totapi4=DB.getFromServDBint("AVAILABILITY",choicebox.getValue(), DB.getNumberOfRowsTBLSERVERS()-2);
-        int totapi5=DB.getFromServDBint("AVAILABILITY",choicebox.getValue(), DB.getNumberOfRowsTBLSERVERS()-1);
+        int totapi1=DB.getFromServDBint("AVAILABILITY",SelectServerCb.getValue(), DB.getNumberOfRowsTBLSERVERS()-5);
+        int totapi2=DB.getFromServDBint("AVAILABILITY",SelectServerCb.getValue(), DB.getNumberOfRowsTBLSERVERS()-4);
+        int totapi3=DB.getFromServDBint("AVAILABILITY",SelectServerCb.getValue(), DB.getNumberOfRowsTBLSERVERS()-3);
+        int totapi4=DB.getFromServDBint("AVAILABILITY",SelectServerCb.getValue(), DB.getNumberOfRowsTBLSERVERS()-2);
+        int totapi5=DB.getFromServDBint("AVAILABILITY",SelectServerCb.getValue(), DB.getNumberOfRowsTBLSERVERS()-1);
         
-        int load1=DB.getFromServDBint("LOADPERC",choicebox.getValue(), DB.getNumberOfRowsTBLSERVERS()-5);
-        int load2=DB.getFromServDBint("LOADPERC",choicebox.getValue(), DB.getNumberOfRowsTBLSERVERS()-4);
-        int load3=DB.getFromServDBint("LOADPERC",choicebox.getValue(), DB.getNumberOfRowsTBLSERVERS()-3);
-        int load4=DB.getFromServDBint("LOADPERC",choicebox.getValue(), DB.getNumberOfRowsTBLSERVERS()-2);
-        int load5=DB.getFromServDBint("LOADPERC",choicebox.getValue(), DB.getNumberOfRowsTBLSERVERS()-1);
+        int load1=DB.getFromServDBint("LOADPERC",SelectServerCb.getValue(), DB.getNumberOfRowsTBLSERVERS()-5);
+        int load2=DB.getFromServDBint("LOADPERC",SelectServerCb.getValue(), DB.getNumberOfRowsTBLSERVERS()-4);
+        int load3=DB.getFromServDBint("LOADPERC",SelectServerCb.getValue(), DB.getNumberOfRowsTBLSERVERS()-3);
+        int load4=DB.getFromServDBint("LOADPERC",SelectServerCb.getValue(), DB.getNumberOfRowsTBLSERVERS()-2);
+        int load5=DB.getFromServDBint("LOADPERC",SelectServerCb.getValue(), DB.getNumberOfRowsTBLSERVERS()-1);
         
         
         //System.out.println("UNIXTIME"+db3.getFromAccDBString("TBLACCOUNT","UNIXTIME", DB.getNumberOfRows()-4));
@@ -82,11 +82,11 @@ public class ServerStats extends Application {
   
     @Override public void start(Stage stage) throws SQLException  {
        DB db3 =new DB();
-       choicebox.setValue(names[0]);
+       SelectServerCb.setValue(names[0]);
         int i=0;
        while(names[i]!=null)
        {
-       choicebox.getItems().add(names[i]);
+       SelectServerCb.getItems().add(names[i]);
        i++;
        }
        setStats();
@@ -96,11 +96,11 @@ public class ServerStats extends Application {
         stage.setTitle("Server Statistics");
         final CategoryAxis xAxis = new CategoryAxis();
         final NumberAxis yAxis = new NumberAxis();
-        final BarChart<String,Number> bc;
-        bc = new BarChart<>(xAxis,yAxis);
-        bc.autosize();
+        final BarChart<String,Number> ServStatBc;
+        ServStatBc = new BarChart<>(xAxis,yAxis);
+        ServStatBc.autosize();
         
-        bc.setTitle("Server Statistics reported by NodeQuery agents");
+        ServStatBc.setTitle("Server Statistics reported by NodeQuery agents");
         //xAxis.setLabel("Country");       
         yAxis.setLabel("Value");
         xAxis.setLabel("Update Time");
@@ -108,14 +108,14 @@ public class ServerStats extends Application {
        
         
          VBox root = new VBox();
-         root.getChildren().addAll(choicebox, bc);
+         root.getChildren().addAll(SelectServerCb, ServStatBc);
         
         Scene scene  = new Scene(root,800,400);
-        bc.getData().addAll(series1,series2);
+        ServStatBc.getData().addAll(series1,series2);
         stage.setScene(scene);
         stage.show();
          
-         choicebox.valueProperty().addListener(new ChangeListener<String>() 
+         SelectServerCb.valueProperty().addListener(new ChangeListener<String>() 
          {
         @Override public void changed(ObservableValue ov, String t, String t1) {
           System.out.println(ov);
