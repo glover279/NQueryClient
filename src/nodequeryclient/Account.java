@@ -33,67 +33,62 @@ public class Account {
 	public void setAPI() {
 
 	}
-	public boolean checkSuccessfulResponse() throws MalformedURLException {
-		URL url = new URL("https://nodequery.com/api/account?api_key=" + api);
-		HttpURLConnection http = null;
-		int statusCode = 0;
+	public boolean checkSuccessfulResponse() throws MalformedURLException { //this accessor method checks if the response from the API was successful and returns a boolean value of true if it was
+            // this is done by checking the value of the HTTP response code, 200 means the response was ok
+		URL url = new URL("https://nodequery.com/api/account?api_key=" + api); // this is the URL to connect to the API and retrieve the account info
+		HttpURLConnection http = null; //new HttpURLConnection
+		int statusCode = 0; //set status code initial value to zero
 
-		try {
-			http = (HttpURLConnection) url.openConnection();
-		} catch (IOException ex) {
+		try { 
+			http = (HttpURLConnection) url.openConnection(); //open the connection
+		} catch (IOException ex) { //catch if an IOException occurs
 			Logger.getLogger(Account.class.getName()).log(Level.SEVERE, null, ex);
 		}
 		try {
-			statusCode = http.getResponseCode();
-		} catch (IOException ex) {
+			statusCode = http.getResponseCode(); // get the response code value and store it in the integer variable
+		} catch (IOException ex) { // catch if an IOException occurs
 			Logger.getLogger(Account.class.getName()).log(Level.SEVERE, null, ex);
 		}
-		boolean success;
-		System.out.println("STATUS CODE: " + statusCode);
-		if (statusCode == 200) {
+		boolean success; // create new boolean variable
+		System.out.println("STATUS CODE: " + statusCode); // for debugging purposes
+		if (statusCode == 200) {   //if the status code is 200 then set the boolean value to true
 			success = true;
-		} else {
+		} else { // if the status code is not 200 then set the boolean value to false as the response was unsuccessful
 			success = false;
 		}
 		return success;
 	}
 
 
-	public String getAccount() throws HTTPstatusException {
-		String uri = "https://nodequery.com/api/account?api_key=" + api;
+	public String getAccount() throws HTTPstatusException { //method to get account data
+		String uri = "https://nodequery.com/api/account?api_key=" + api; 
 
 		boolean t2 = false;
 		try {
-			t2 = checkSuccessfulResponse();
-			System.out.println("RESP: " + t2);
-		} catch (IOException ex) {
+			t2 = checkSuccessfulResponse(); //set the boolean value to the result of the checkSuccessfulResponse() method
+			System.out.println("RESP: " + t2); // for debugging purposes
+		} catch (IOException ex) { //catch an IOException if it occurs
 			Logger.getLogger(Account.class.getName()).log(Level.SEVERE, null, ex);
 		}
 		String result = null;
-		if (t2 == true) {
-			RestTemplate restTemplate = new RestTemplate();
-			result = restTemplate.getForObject(uri, String.class);
+		if (t2 == true) { //if the response is successful
+			RestTemplate restTemplate = new RestTemplate(); //instantiate new RestTemplate
+			result = restTemplate.getForObject(uri, String.class); //set the string to the result from the API
 		} else {
-			JOptionPane.showMessageDialog(null, "API Key Invalid");
-			throw new HTTPstatusException("HTTP RESPONSE ERROR, CHECK API KEY");
+			JOptionPane.showMessageDialog(null, "API Key Invalid"); //inform the user that the API key is invalid
+			throw new HTTPstatusException("HTTP RESPONSE ERROR, CHECK API KEY"); // throw a new HTTPstatusException
 		}
-		System.out.println(result);
-		return result;
+		System.out.println(result); // for debugging purposes
+		return result; //return the string
 	}
 
-	public String getAPI() {
+	public String getAPI() { //accessor method which returns the API key that was set
 		return api;
 	}
 
 
 
-	public static void main(String[] args) {
-		DB db1 = new DB();
-		//getAccount();
-		//  getName();
-		//getRequests();
-
-
+	public static void main(String[] args) { //main method
 		// TODO code application logic here
 	}
 
