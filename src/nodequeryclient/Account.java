@@ -92,27 +92,11 @@ public class Account {
 		// TODO code application logic here
 	}
 
-	public boolean getStatus() throws HTTPstatusException {
-		JSONObject obj = new JSONObject(getAccount());
-		String t = obj.toString();
-		CharSequence cs1 = "ERROR";
-		boolean chk;
-		if (t.contains(cs1)) {
-			chk = false;
-		} else {
-			chk = true;
-		}
-		String Name = obj.getJSONObject("data").getString("name");
-
-
-		System.out.println("Name: " + Name);
-		return chk;
-
-	}
-	public Timestamp getUnixTime() {
+	
+	public Timestamp getUnixTime() { // accessor method which returns the UnixTime (Epoch time) in the format of a Timestamp
 		//Date object
-		Date date = new Date();
-		//getTime() returns current time in milliseconds
+		Date date = new Date(); //instantaite new date
+		
 		long time = date.getTime(); //The java.util.Date.getTime() method returns how many milliseconds have passed since January 1, 1970, 00:00:00 GMT, this time in seconds is often referred to as UNIX Time
 		//Passed the milliseconds to constructor of Timestamp class 
 		Timestamp ts = new Timestamp(time);
@@ -121,45 +105,44 @@ public class Account {
 	}
 
 
-	public String getName() throws HTTPstatusException {
-		JSONObject obj = new JSONObject(getAccount());
-		String Name = obj.getJSONObject("data").getString("name");
-		//Name = Name.replaceAll("\\s",""); 
+	public String getName() throws HTTPstatusException { //accessor method which returns the name of the account owner
+		JSONObject obj = new JSONObject(getAccount());  //new JSON objects
+		String Name = obj.getJSONObject("data").getString("name"); //set string to name on account
 
-		System.out.println("Name: " + Name);
-		return Name;
+		System.out.println("Name: " + Name); // for debugging purposes
+		return Name; //return the name
 
 	}
-	public int getMaxServ() throws HTTPstatusException {
-		JSONObject obj = new JSONObject(getAccount());
-		int sl = obj.getJSONObject("data").getInt("server_limit");
+	public int getMaxServ() throws HTTPstatusException { //accessor method which returns the maximum number of servers supported on the account
+		JSONObject obj = new JSONObject(getAccount()); //fill JSON Object with data from account
+		int sl = obj.getJSONObject("data").getInt("server_limit"); // set the integer value to the maximum servers supported on the account
 
-		System.out.println("Timezone: " + sl);
+		System.out.println("Timezone: " + sl); // for debugging purposes
 		return sl;
 
 	}
-	public int getTimezone() throws HTTPstatusException {
-		JSONObject obj = new JSONObject(getAccount());
-		int tz = obj.getJSONObject("data").getInt("timezone");
+	public int getTimezone() throws HTTPstatusException { //accessor method which returns an integer that represents the index of the timezone
+		JSONObject obj = new JSONObject(getAccount()); // set json value from account data
+		int tz = obj.getJSONObject("data").getInt("timezone"); //set integer variable value to the timezone index
 
-		System.out.println("Timezone: " + tz);
-		return tz;
-
-	}
-	public int getRequests() throws HTTPstatusException {
-		JSONObject obj = new JSONObject(getAccount());
-		int req = obj.getJSONObject("data").getJSONObject("api").getInt("requests");
-
-		System.out.println("Requests: " + req);
-		return req;
+		System.out.println("Timezone: " + tz); //for debugging purposes
+		return tz; //return the integer
 
 	}
-	public int getRateLimit() throws HTTPstatusException {
-		JSONObject obj = new JSONObject(getAccount());
-		int rl = obj.getJSONObject("data").getJSONObject("api").getInt("rate_limit");
+	public int getRequests() throws HTTPstatusException { //accessor method which returns an integer value  that represents the total number of requests made to the api
+		JSONObject obj = new JSONObject(getAccount()); //populate JSON object
+		int req = obj.getJSONObject("data").getJSONObject("api").getInt("requests"); //set integer value of requests
 
-		System.out.println("Requests: " + rl);
-		return rl;
+		System.out.println("Requests: " + req);  //for debugging purposes
+		return req; //returns int
+
+	}
+	public int getRateLimit() throws HTTPstatusException {  //accessor method which returns an integer value that represents the maximum number of requests in 3 minutes
+		JSONObject obj = new JSONObject(getAccount()); //populate JSON object
+		int rl = obj.getJSONObject("data").getJSONObject("api").getInt("rate_limit");  //set integer value variable (rate limit) from JSON object
+
+		System.out.println("Requests: " + rl); //for debugging purposes
+		return rl; //return integer
 
 	}
 	public DateTimeZone getTimeInzone() throws HTTPstatusException {
