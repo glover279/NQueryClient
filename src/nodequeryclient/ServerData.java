@@ -5,8 +5,6 @@
  */
 package nodequeryclient;
 
-import java.sql.PreparedStatement;
-import javax.swing.table.DefaultTableModel;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -16,12 +14,12 @@ import net.proteanit.sql.DbUtils;
 public class ServerData extends javax.swing.JFrame {
 String sql;
 String load = "",ip = "",ava = "",la="";
-
+DB db11=new DB();
     /**
      * Creates new form ServerData
      */
     public ServerData() {
-        initComponents();
+        initComponents(); //intialise GUI components
     }
    
     
@@ -89,16 +87,16 @@ String load = "",ip = "",ava = "",la="";
     }// </editor-fold>//GEN-END:initComponents
 
     private void updTablebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updTablebtnActionPerformed
-        DB db11=new DB();
+        
      
         DataTbl.setModel(DbUtils.resultSetToTableModel(db11.ServerData()));
-        
+        // uses RS2XML to populate the Table by converting a resultset from the SQL query to a table model
         
         
         
     }//GEN-LAST:event_updTablebtnActionPerformed
 
-    public String getSQLquery()
+    public String getSQLquery() //accessor method for GUI model
     {   System.out.println(sql);
         return sql;
     }

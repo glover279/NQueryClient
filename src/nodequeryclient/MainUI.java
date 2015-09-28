@@ -13,6 +13,11 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.application.Platform;
+import javafx.embed.swing.JFXPanel;
+import javafx.stage.Stage;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -243,9 +248,9 @@ public class MainUI extends javax.swing.JFrame {
     }//GEN-LAST:event_updAccBtnActionPerformed
 
     private void setKeyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setKeyBtnActionPerformed
-       // DB.setAPIkey(keyFld.getText());
+       
         DB.setAPIkey(keyFld.getText());
-        Account ac2=new Account();
+        if (keyFld.getText().length()==48 && Main.isAllASCII(keyFld.getText())==true){
         
         Account ac7=new Account();
         try {
@@ -255,11 +260,7 @@ public class MainUI extends javax.swing.JFrame {
         }
         try {
             ac7.InsertAccount();
-        } catch (SQLException ex) {
-            Logger.getLogger(MainUI.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (HTTPstatusException ex) {
-            Logger.getLogger(MainUI.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (MalformedURLException ex) {
+        } catch (SQLException | HTTPstatusException | MalformedURLException ex) {
             Logger.getLogger(MainUI.class.getName()).log(Level.SEVERE, null, ex);
         }
         
@@ -267,7 +268,8 @@ public class MainUI extends javax.swing.JFrame {
             ServerList sl=new ServerList();
         } catch (SQLException ex) {
             Logger.getLogger(MainUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }}
+        else{JOptionPane.showMessageDialog(null, "API Key must be 48 characters & must consist of only ASCII characters");}
         
     }//GEN-LAST:event_setKeyBtnActionPerformed
 
@@ -286,19 +288,28 @@ public class MainUI extends javax.swing.JFrame {
     }//GEN-LAST:event_ShowAccStatsBtntglActionPerformed
 
     private void updServerDataBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updServerDataBtnActionPerformed
+        Account acc6=new Account();
         
         try {
-            ServerList Serv1=new ServerList();
-            Serv1.setServer();
+            try {
+                if (acc6.checkSuccessfulResponse()==true){ServerList Serv1=new ServerList();
+                Serv1.setServer();
+                }
+                else{JOptionPane.showMessageDialog(null, "API Key Invalid");}
+            } catch (MalformedURLException ex) {
+                Logger.getLogger(MainUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
         } catch (SQLException ex) {
             Logger.getLogger(MainUI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_updServerDataBtnActionPerformed
 
     private void ShowServStatsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowServStatsBtnActionPerformed
-//        ServerStats servstat=new ServerStats();
-       // servstat.setVisible(true);
-         javafx.application.Application.launch(ServerStats.class);
+        javafx.application.Application.launch(ServerStats.class);
+       
+       
+        
     }//GEN-LAST:event_ShowServStatsBtnActionPerformed
 
     private void ShowServTBLbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowServTBLbtnActionPerformed

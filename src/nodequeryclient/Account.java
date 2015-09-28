@@ -145,17 +145,17 @@ public class Account {
 		return rl; //return integer
 
 	}
-	public DateTimeZone getTimeInzone() throws HTTPstatusException {
-		DateTimeZone zoneUTC = DateTimeZone.forOffsetHours(getTimezone());
-		return zoneUTC;
+	public DateTimeZone getTimeInzone() throws HTTPstatusException { //accessor method which returns the time in the timezone in the format of a DateTimeZone
+		DateTimeZone zoneUTC = DateTimeZone.forOffsetHours(getTimezone()); //create new variable and set the value into the correct format from the getTimezone method
+		return zoneUTC; //returns the data
 	}
 
 
 
-	public void InsertAccount() throws SQLException, HTTPstatusException, MalformedURLException {
-		DB db3 = new DB();
-		System.out.println("KEY: " + db3.getAPIkey());
-		db3.insertIntoAcc(getName(), getTimezone(), getRequests(), getRateLimit(), getMaxServ(), db3.getAPIkey());
+	public void InsertAccount() throws SQLException, HTTPstatusException, MalformedURLException { // void method which inserts account data into database
+		DB db3 = new DB(); //instantiate new DB object
+		System.out.println("KEY: " + db3.getAPIkey()); //for debugging purposes
+		DB.insertIntoAcc(getName(), getTimezone(), getRequests(), getRateLimit(), getMaxServ(), db3.getAPIkey()); //calls static insertIntoAcc method and passes in the temporary vaiables which then get passed into the database
 	}
 
 }

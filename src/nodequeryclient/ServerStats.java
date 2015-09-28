@@ -9,13 +9,16 @@ package nodequeryclient;
  *
  * @author Robert
  */
+import java.awt.Font;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.embed.swing.JFXPanel;
 import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
@@ -23,7 +26,12 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javax.swing.GroupLayout.Group;
+import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 
 public class ServerStats extends Application { 
 	String[] names = DB.getFromServDBName();
@@ -97,7 +105,7 @@ public class ServerStats extends Application {
 		final NumberAxis yAxis = new NumberAxis();
 		final BarChart < String, Number > ServStatBc;
 		ServStatBc = new BarChart < > (xAxis, yAxis);
-		ServStatBc.autosize();
+		ServStatBc.autosize(); //set size of chart
 
 		ServStatBc.setTitle("Server Statistics reported by NodeQuery agents");
 		//xAxis.setLabel("Country");       
@@ -106,13 +114,14 @@ public class ServerStats extends Application {
 
 
 
-		VBox root = new VBox();
+		VBox root = new VBox(); 
 		root.getChildren().addAll(SelectServerCb, ServStatBc);
 
 		Scene scene = new Scene(root, 800, 400);
 		ServStatBc.getData().addAll(series1, series2);
 		stage.setScene(scene);
 		stage.show();
+                stage.setOnCloseRequest(e -> Platform.exit());
 
 		SelectServerCb.valueProperty().addListener(new ChangeListener < String > () {@Override public void changed(ObservableValue ov, String t, String t1) {
 				System.out.println(ov);
@@ -128,12 +137,22 @@ public class ServerStats extends Application {
 		});
 
 	}
+        
+        
 
 	public void setVisible(boolean value) {
 		setVisible(value);
 	}
-	public static void main(String[] args) {
+        
+    
+	public static void main(String[] args) throws SQLException {
+            Stage stage1=new Stage();
+            ServerStats ss1=new ServerStats();
+            ss1.start(stage1);
 		launch(args);
+               
+        }
+        
+        
 
 	}
-}

@@ -9,8 +9,8 @@ package nodequeryclient;
  *
  * @author Robert
  */
-public class HTTPstatusException extends Exception{
+public class HTTPstatusException extends Exception{ //Exception class
     public HTTPstatusException(String message){
-     super(message);
+     super(message); //from superclass
   } 
 }

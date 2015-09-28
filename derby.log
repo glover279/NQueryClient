@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
-Sat Sep 26 22:44:01 CAT 2015:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance a816c00e-0150-0b65-f178-00000ad4d020 
+Mon Sep 28 22:51:58 CAT 2015:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance a816c00e-0150-15b9-ef2e-00000ad4d020 
 on database directory C:\Users\Robert\Documents\NetBeansProjects\NodeQuery\NodeQuery\NodeQueryClient\nodequery with class loader sun.misc.Launcher$AppClassLoader@45ee12a7 
 Loaded from file:/C:/Users/Robert/Documents/NetBeansProjects/NodeQueryClient/derby.jar
 java.vendor=Oracle Corporation

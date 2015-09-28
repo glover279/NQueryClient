@@ -24,5 +24,16 @@ public class Main {
 
 		
 	}
+        public static boolean isAllASCII(String input) { //method which checks if a string contains nonascii characters (string as parameter)
+    boolean isASCII = true; //return true if only ascii characters exist
+    for (int i = 0; i < input.length(); i++) { //run loop through each character in string
+        int c = input.charAt(i); //store ascii value 
+        if (c > 0x7F) { //check if value lies outside the ascii value
+            isASCII = false; //if true then set the boolean to false
+            break;  //stop
+        } 
+    } 
+    return isASCII; //return boolean value
+} 
 
 }

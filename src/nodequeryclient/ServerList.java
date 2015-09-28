@@ -14,68 +14,65 @@ import org.springframework.web.client.RestTemplate;
  * @author Robert
  */
 public class ServerList {
-	private String key;
+	
 
-	DB db10 = new DB();
+	DB db10 = new DB(); //instantiate new DB object
 	public ServerList() throws SQLException {
-		setServer();
+		setServer(); //call set server method
 	}
 
-	public String getServerList()
+	public String getServerList() //accessor method which returns a string, the list of servers
 
 	{
-		String slist;
-		Account acc6 = new Account();
-		RestTemplate resttemplate = new RestTemplate();
-		String url = "https://nodequery.com/api/servers?api_key=" + acc6.getAPI();
-		slist = resttemplate.getForObject(url, String.class);
+		String slist; //new strinf
+		Account acc6 = new Account(); //instantiate new account obkect
+		RestTemplate resttemplate = new RestTemplate(); //instantiate new resttemplate
+		String url = "https://nodequery.com/api/servers?api_key=" + acc6.getAPI(); //url for connection
+		slist = resttemplate.getForObject(url, String.class); //store the result in the string
 
-		System.out.println(slist);
+		System.out.println(slist); //for debugging purposes
 		return slist;
 
 	}
 
 	public void setServer() throws SQLException {
 
-		//JSONObject obj = new JSONObject(getServerList());
-		//String temp = obj.getJSONObject("data").toString();
-		String tempSL = getServerList().substring(66);
-		System.out.println("TEMP: " + tempSL);
-		String[] sList = new String[500];
-		Scanner scan = new Scanner(tempSL).useDelimiter("},");
-		String temp2 = scan.next();
-		//Scanner scan2=new Scanner(temp2).useDelimiter("},");
-		int i = 0;
-		while (scan.hasNext()) {
-			sList[i] = scan.next();
-			i++;
+		
+		String tempSL = getServerList().substring(66); //cut off unneccessary data
+		System.out.println("TEMP: " + tempSL); //for debugging purposes
+		String[] sList = new String[500]; //new string arrar of servers with 500 elements possible
+		Scanner scan = new Scanner(tempSL).useDelimiter("},"); //new scanner to seperate each server in the JSON object and
+		String temp2 = scan.next(); //next string
+		
+		int i = 0; //set counter to 0
+		while (scan.hasNext()) { //iterate through the the file with the scanner
+			sList[i] = scan.next(); //populate the array from the scanner
+			i++; //increment i by one
 			//scan.close();
 		}
 
-		int p = 0;
-		while (sList[p] != null && sList[p].length() > 0) {
-			Scanner scan3 = new Scanner(sList[p]).useDelimiter(",");
-			System.out.println("SCAN3:  " + sList[0]);
+		int p = 0; //set counter to 0 
+		while (sList[p] != null && sList[p].length() > 0) { //run while the array at the position has a value
+			Scanner scan3 = new Scanner(sList[p]).useDelimiter(","); //new scanner to seperate line which is a value of data
+			System.out.println("SCAN3:  " + sList[0]); //for debugging purposes
 
-			String id = scan3.next();
-
-			String status = scan3.next();
-			String availability = scan3.next();
-			String update_time = scan3.next();
-			String name = scan3.next();
-			String loadpercentage = scan3.next();
-			String load_average = scan3.next();
-			String ram_total = scan3.next();
-			String ram_usage_ = scan3.next();
-			String disk_total = scan3.next();
-			String disk_usage = scan3.next();
-
-			String ipv4 = scan3.next();
-			//scan3.close();
+			String id = scan3.next();               //set next string = id
+			String status = scan3.next();           //set next string = status
+			String availability = scan3.next();     //set next string = availability
+			String update_time = scan3.next();      //set next string = update_time
+			String name = scan3.next();             //set next string = name
+			String loadpercentage = scan3.next();   //set next string = loadpercentage
+			String load_average = scan3.next();     //set next string = load_average
+			String ram_total = scan3.next();        //set next string = ram tot (for future expansion)
+			String ram_usage_ = scan3.next();       //set next string = ram usage (for future expansion)
+			String disk_total = scan3.next();       //set next string = disk tot (for future expansion)
+			String disk_usage = scan3.next();       //set next string = disk usage (for future expansion)
+			String ipv4 = scan3.next();             //set next string = ipv4
+			
 
 
-			int idIndex = id.indexOf(":");
-			int statusIndex = status.indexOf(":");
+			int idIndex = id.indexOf(":"); //find index location of the : character to remove it and the characters which preceed it
+			int statusIndex = status.indexOf(":"); //repeat this till line 81
 			int availabilityIndex = availability.indexOf(":");
 			int update_timeIndex = update_time.indexOf(":");
 			int nameIndex = name.indexOf(":");
@@ -83,12 +80,12 @@ public class ServerList {
 			int load_averageIndex = load_average.indexOf(":");
 			int ipv4Index = ipv4.indexOf(":");
 
-			System.out.println("IDdebug " + id);
-			id = id.substring(idIndex + 2).replace('"', ' ');
-			System.out.println("ID: " + id);
+			System.out.println("IDdebug " + id); //for debugging purposes
+			id = id.substring(idIndex + 2).replace('"', ' '); //replace quotation mark with space
+			System.out.println("ID: " + id); //for debugging purposes
 			int idInt = Integer.parseInt(id);
 			status = status.substring(statusIndex + 2).replace('"', ' ');
-			System.out.println("STATUS: " + status);
+			System.out.println("STATUS: " + status); //for debugging purposes
 			availability = availability.substring(availabilityIndex + 2).replace('"', ' ');
 			int alen = availability.length();
 			String availabilityConv = availability.substring(0, alen - 2);
